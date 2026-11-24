@@ -2437,7 +2437,7 @@ class _AboutState extends State<_About> {
                 height: 8.0,
               ),
               SelectionArea(
-                  child: Text('${translate('Version')}: $version')
+                  child: Text('${translate('Version')}: $version-zs2')
                       .marginSymmetric(vertical: 4.0)),
               SelectionArea(
                   child: Text('${translate('Build Date')}: $buildDate')
@@ -2448,7 +2448,7 @@ class _AboutState extends State<_About> {
                         .marginSymmetric(vertical: 4.0)),
               InkWell(
                   onTap: () {
-                    launchUrlString('https://rustdesk.com/privacy.html');
+                    launchUrlString('https://zeroshield360.com/politica-de-privacidad/');
                   },
                   child: Text(
                     translate('Privacy Statement'),
@@ -2456,14 +2456,14 @@ class _AboutState extends State<_About> {
                   ).marginSymmetric(vertical: 4.0)),
               InkWell(
                   onTap: () {
-                    launchUrlString('https://rustdesk.com');
+                    launchUrlString('https://zeroshield360.com');
                   },
                   child: Text(
                     translate('Website'),
                     style: linkStyle,
                   ).marginSymmetric(vertical: 4.0)),
               Container(
-                decoration: const BoxDecoration(color: Color(0xFF2c8cff)),
+                decoration: const BoxDecoration(color: Color(0xFF191B36)),
                 padding:
                     const EdgeInsets.symmetric(vertical: 24, horizontal: 8),
                 child: SelectionArea(
@@ -2473,16 +2473,19 @@ class _AboutState extends State<_About> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
+                          Image.asset('assets/logo_dark.png',
+                                  height: 36, fit: BoxFit.contain,
+                                  errorBuilder: (ctx, e, st) => Container())
+                              .marginOnly(bottom: 12),
                           Text(
-                            'Copyright © ${DateTime.now().toString().substring(0, 4)} Purslane Tech Pte. Ltd.\n$license',
+                            '© 2026 ZeroShield360 · NS-Technologies Horizonsky S.A.S.${license.isEmpty ? '' : '\n$license'}',
                             style: const TextStyle(color: Colors.white),
                           ),
                           Text(
-                            translate('Slogan_tip'),
-                            style: TextStyle(
-                                fontWeight: FontWeight.w800,
-                                color: Colors.white),
-                          )
+                            'Basado en RustDesk (AGPL-3.0) · Código fuente: https://github.com/hector2282/zerodesk',
+                            style: const TextStyle(
+                                fontSize: 11, color: Colors.white70),
+                          ).marginOnly(top: 8)
                         ],
                       ),
                     ),

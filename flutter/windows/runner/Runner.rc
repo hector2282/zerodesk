@@ -93,10 +93,10 @@ BEGIN
             VALUE "FileDescription", "ZeroDesk Remote Desktop (basado en RustDesk)" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
             VALUE "InternalName", "zerodesk" "\0"
-            VALUE "LegalCopyright", "Copyright © 2026 Purslane Tech Pte. Ltd. All rights reserved." "\0"
+            VALUE "LegalCopyright", "© 2026 ZeroShield360 · NS-Technologies Horizonsky S.A.S. Basado en RustDesk © Purslane Tech Pte. Ltd. (AGPL-3.0)" "\0"
             VALUE "OriginalFilename", "ZeroDesk.exe" "\0"
             VALUE "ProductName", "ZeroDesk" "\0"
-            VALUE "ProductVersion", VERSION_AS_STRING "\0"
+            VALUE "ProductVersion", "1.4.9-zs2" "\0"
         END
     END
     BLOCK "VarFileInfo"

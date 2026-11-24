@@ -952,6 +952,10 @@ pub fn check_software_update() {
 // Because the url is always `https://api.rustdesk.com/version/latest`.
 #[tokio::main(flavor = "current_thread")]
 pub async fn do_check_software_update() -> hbb_common::ResultType<()> {
+    // ZeroDesk: chequeo de actualizaciones contra rustdesk.com desactivado.
+    if true {
+        return Ok(());
+    }
     let (request, url) =
         hbb_common::version_check_request(hbb_common::VER_TYPE_RUSTDESK_CLIENT.to_string());
     let proxy_conf = Config::get_socks();
@@ -1080,7 +1084,8 @@ fn get_api_server_(api: String, custom: String) -> String {
             return format!("http://{}", s);
         }
     }
-    "https://admin.rustdesk.com".to_owned()
+    // ZeroDesk: sin servidor publico de RustDesk; API derivada de nuestro servidor
+    format!("http://{}:{}", config::RENDEZVOUS_SERVERS[0], config::RENDEZVOUS_PORT - 2)
 }
 
 #[inline]
@@ -2104,6 +2109,7 @@ pub fn apply_zerodesk_config() {
         let mut b = config::BUILTIN_SETTINGS.write().unwrap();
         b.insert(keys::OPTION_HIDE_SERVER_SETTINGS.to_owned(), "Y".to_owned());
         b.insert(keys::OPTION_HIDE_WEBSOCKET_SETTINGS.to_owned(), "Y".to_owned());
+        b.insert(keys::OPTION_HIDE_POWERED_BY_ME.to_owned(), "Y".to_owned());
     }
 }
 

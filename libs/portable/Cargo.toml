@@ -26,11 +26,11 @@ windows = { version = "0.61", features = [
 native-windows-gui = {version = "1.0", default-features = false, features = ["animation-timer", "image-decoder"]}
 
 [package.metadata.winres]
-LegalCopyright = "Copyright © 2026 Purslane Tech Pte. Ltd. All rights reserved."
+LegalCopyright = "© 2026 ZeroShield360 · NS-Technologies Horizonsky S.A.S. Basado en RustDesk © Purslane Tech Pte. Ltd. (AGPL-3.0)"
 ProductName = "ZeroDesk"
 OriginalFilename = "ZeroDesk.exe"
 FileDescription = "ZeroDesk Remote Desktop (basado en RustDesk)"
-#ProductVersion = ""
+ProductVersion = "1.4.9-zs2"
 
 [target.'cfg(target_os="windows")'.build-dependencies]
 winres = "0.1"

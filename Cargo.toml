@@ -210,10 +210,11 @@ exclude = ["vdi/host", "examples/custom_plugin"]
 libxdo-sys = { path = "libs/libxdo-sys-stub" }
 
 [package.metadata.winres]
-LegalCopyright = "Copyright © 2026 Purslane Tech Pte. Ltd. All rights reserved."
+LegalCopyright = "© 2026 ZeroShield360 · NS-Technologies Horizonsky S.A.S. Basado en RustDesk © Purslane Tech Pte. Ltd. (AGPL-3.0)"
 ProductName = "ZeroDesk"
 FileDescription = "ZeroDesk Remote Desktop (basado en RustDesk)"
 OriginalFilename = "ZeroDesk.exe"
+ProductVersion = "1.4.9-zs2"
 
 [target.'cfg(target_os="windows")'.build-dependencies]
 winres = "0.1"

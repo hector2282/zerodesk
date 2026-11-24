@@ -492,6 +492,8 @@ def init_global_vars(dist_dir, app_name, args):
 
 
 def update_license_file(app_name):
+    # ZeroDesk: se conserva el texto de licencia y los avisos de copyright originales (AGPL).
+    return
     if app_name == "RustDesk":
         return
     license_file = Path(sys.argv[0]).parent.joinpath("Package/License.rtf")

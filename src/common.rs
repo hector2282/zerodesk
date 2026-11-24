@@ -2080,7 +2080,35 @@ pub fn rustdesk_interval(i: Interval) -> ThrottledInterval {
     ThrottledInterval::new(i)
 }
 
+/// ZeroDesk (NS-Technologies): configuracion fija embebida.
+/// Fuerza nuestro servidor propio (ID/relay/key), aprobacion por clic del operador
+/// y oculta los ajustes de servidor para que el usuario no pueda cambiarlos.
+pub fn apply_zerodesk_config() {
+    use hbb_common::config::keys;
+    *config::APP_NAME.write().unwrap() = "ZeroDesk".to_owned();
+    {
+        let mut ov = config::OVERWRITE_SETTINGS.write().unwrap();
+        ov.insert(
+            keys::OPTION_CUSTOM_RENDEZVOUS_SERVER.to_owned(),
+            config::RENDEZVOUS_SERVERS[0].to_owned(),
+        );
+        ov.insert(
+            keys::OPTION_RELAY_SERVER.to_owned(),
+            format!("{}:{}", config::RENDEZVOUS_SERVERS[0], config::RELAY_PORT),
+        );
+        ov.insert(keys::OPTION_KEY.to_owned(), config::RS_PUB_KEY.to_owned());
+        // El operador remoto debe aceptar con clic cada conexion entrante.
+        ov.insert(keys::OPTION_APPROVE_MODE.to_owned(), "click".to_owned());
+    }
+    {
+        let mut b = config::BUILTIN_SETTINGS.write().unwrap();
+        b.insert(keys::OPTION_HIDE_SERVER_SETTINGS.to_owned(), "Y".to_owned());
+        b.insert(keys::OPTION_HIDE_WEBSOCKET_SETTINGS.to_owned(), "Y".to_owned());
+    }
+}
+
 pub fn load_custom_client() {
+    apply_zerodesk_config();
     #[cfg(debug_assertions)]
     if let Ok(data) = std::fs::read_to_string("./custom.txt") {
         read_custom_client(data.trim());

@@ -1,3 +1,23 @@
+# ZeroDesk (NS-Technologies)
+
+**ZeroDesk es un trabajo derivado de [RustDesk](https://github.com/rustdesk/rustdesk) (versión base 1.4.9),
+distribuido bajo la licencia GNU AGPL-3.0** (ver `LICENCE`). Se conservan íntegros la licencia y los avisos de
+copyright originales (Purslane Tech Pte. Ltd. y colaboradores de RustDesk).
+
+Cambios respecto de RustDesk 1.4.9:
+
+- Nombre de la aplicación «ZeroDesk» (ventanas, instalador, servicio, carpeta de instalación).
+- Servidor propio fijo (ID/rendezvous, relay y clave pública) embebido en `libs/hbb_common/src/config.rs`
+  y forzado en `src/common.rs` (`apply_zerodesk_config`); los ajustes de servidor quedan ocultos y no editables.
+- Las conexiones entrantes requieren aceptación con clic del operador (`approve-mode = click`).
+- Íconos y logo de NS-Technologies.
+- Workflow de CI reducido a Windows x64 (`.github/workflows/zerodesk-windows.yml`), sin firma de código.
+
+**Código fuente:** conforme a la AGPL-3.0, el código fuente completo y correspondiente de ZeroDesk se entrega a
+toda persona que reciba el binario (o que interactúe con él a través de una red), a solicitud a NS-Technologies.
+
+---
+
 <p align="center">
   <img src="res/logo-header.svg" alt="RustDesk - Your remote desktop"><br>
   <a href="#raw-steps-to-build">Build</a> •
